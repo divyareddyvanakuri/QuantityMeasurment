@@ -1,4 +1,4 @@
-from qunatitymeasurment import InchUnit
+from qunatitymeasurment import YardUnit
 from qunatitymeasurment import FeetUnit
 from qunatitymeasurment import Unit
 
@@ -11,19 +11,22 @@ class Quantity:
     def __eq__(self, other):
         self.factor = int(self.unit.comparisons_to_base(self.value))
         other.factor = int(other.unit.comparisons_to_base(other.value))
+        # print(self.factor)
+        # print(other.factor)
         if self.factor == other.factor:
             return True
         return False
 
- # 1 ft = 12 inch
+ 
 try:
-    feet_object = Quantity(1, FeetUnit())
-    inches_object = Quantity(12, InchUnit())
-    print("Is 1ft = 12inch:", feet_object == inches_object)
+    # 3 ft = 1 yard
+    yard_object = Quantity(1, YardUnit())
+    feet_object = Quantity(3, FeetUnit())
+    print("Is 3ft = 1yard:", feet_object == yard_object)
 except NameError as e:
     print("Runtime Error:",e)
 except ValueError as e:
     print("Runtime Error:",e)
-
-
+except AttributeError as e:
+    print("Runtime Error:",e)
 
