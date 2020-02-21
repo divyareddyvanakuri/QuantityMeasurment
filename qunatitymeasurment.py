@@ -10,19 +10,19 @@ class Unit(ABC):
         return value*self.conversion_factor
 
 
-# Derived class from the base class
-class GallonUnit(Unit):
-    def __init__(self):
-        super().__init__(3.78)
-
-
-# Derived class from the base class
-class LitreUnit(Unit):
+#Derived class from the base class
+class KgUnit(Unit):
     def __init__(self):
         super().__init__(1)
 
 
-# Derived class from the base class
-class MlUnit(Unit):
+#Derived class from the base class
+class GramUnit(Unit):
     def __init__(self):
         super().__init__(1/1000)
+
+
+#Derived class from the base class
+class TonneUnit(Unit):
+    def __init__(self):
+        super().__init__(1000)
