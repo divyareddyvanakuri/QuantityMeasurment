@@ -1,4 +1,4 @@
-from qunatitymeasurment import LitreUnit,GallonUnit,MlUnit,Unit
+from qunatitymeasurment import KgUnit,TonneUnit,GramUnit,Unit
 
 
 #This is the composition class for feet and inch objects
@@ -7,6 +7,13 @@ class Quantity:
         self.value = value
         self.unit = unit
 
+    def __eq__(self, other):
+            self.factor = int(self.unit.comparisons_to_base(self.value))
+            other.factor = int(other.unit.comparisons_to_base(other.value))
+            if self.factor == other.factor:
+                return True
+            return False
+
     def __add__(self, other):
         self.factor = float(self.unit.comparisons_to_base(self.value))
         other.factor = float(other.unit.comparisons_to_base(other.value))
@@ -14,17 +21,21 @@ class Quantity:
 
  
 try:
-    # 1 gallon + 3.78 litres
-    one_gallon_object = Quantity(1, GallonUnit())
-    litre_object = Quantity(3.78, LitreUnit())
-    z = one_gallon_object+litre_object
-    print("add two volumes 1 gallon and 3.78 litres in litres:", z)
+   # 1 kg = 1000 grams
+    one_kg_object = Quantity(1, KgUnit())
+    grams_object = Quantity(1000, GramUnit())
+    print("Is 1 kg = 1000 grams:", one_kg_object == grams_object)
 
-    # 1 litre + 1000 ml
-    one_litre_object = Quantity(1, LitreUnit())
-    one_ml_obeject = Quantity(1000, MlUnit())
-    z = one_litre_object+one_ml_obeject
-    print("add two volumes 1 litre and 1000 ml in litres:", z)
+    # 1 tonne = 1000 kg
+    tonne_object = Quantity(1, TonneUnit())
+    kg_object = Quantity(1000, KgUnit())
+    print("Is 1 tonne = 1000 kg:", tonne_object == kg_object)
+
+    # 1 tonne + 1000 grams
+    tonne_object = Quantity(1, TonneUnit())
+    grams_object = Quantity(1000, GramUnit())
+    z = tonne_object+grams_object
+    print("Add two weights 1 tonne and 1000 grams in kg:", z)
 except NameError as e:
     print("Runtime Error:",e)
 except ValueError as e:
