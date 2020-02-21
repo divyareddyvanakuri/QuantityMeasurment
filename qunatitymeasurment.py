@@ -11,12 +11,12 @@ class Unit(ABC):
 
 
 # Derived class from base class
-class FeetUnit(Unit):
+class InchUnit(Unit):
     def __init__(self):
-        super().__init__(1)
+        super().__init__(5)
 
 
 #Derived class from base class
-class YardUnit(Unit):
+class CentiMeterUnit(Unit):
     def __init__(self):
-        super().__init__(3)
+        super().__init__(2)
