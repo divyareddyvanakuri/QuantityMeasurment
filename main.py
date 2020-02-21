@@ -7,23 +7,24 @@ class Quantity:
         self.value = value
         self.unit = unit
 
-    def __eq__(self,other):
+    def __add__(self, other):
         self.factor = float(self.unit.comparisons_to_base(self.value))
         other.factor = float(other.unit.comparisons_to_base(other.value))
-        if self.factor == other.factor:
-            return True
-        return False
+        return self.factor+other.factor
 
  
 try:
-  # 1 gallon = 3.78 litres
-    gallon_object = Quantity(1,GallonUnit())
-    litres_object = Quantity(3.78,LitreUnit())
-    print("Is 1 gallon = 3.78 litres:",gallon_object == litres_object)
-    # 1 litre = 1000 ml
-    litre_object = Quantity(1,LitreUnit())
-    ml_object = Quantity(1000,MlUnit())
-    print("Is 1 litre = 1000 ml:",litre_object == ml_object)
+    # 1 gallon + 3.78 litres
+    one_gallon_object = Quantity(1, GallonUnit())
+    litre_object = Quantity(3.78, LitreUnit())
+    z = one_gallon_object+litre_object
+    print("add two volumes 1 gallon and 3.78 litres in litres:", z)
+
+    # 1 litre + 1000 ml
+    one_litre_object = Quantity(1, LitreUnit())
+    one_ml_obeject = Quantity(1000, MlUnit())
+    z = one_litre_object+one_ml_obeject
+    print("add two volumes 1 litre and 1000 ml in litres:", z)
 except NameError as e:
     print("Runtime Error:",e)
 except ValueError as e:
