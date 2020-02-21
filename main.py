@@ -1,5 +1,5 @@
-from qunatitymeasurment import YardUnit
-from qunatitymeasurment import FeetUnit
+from qunatitymeasurment import InchUnit
+from qunatitymeasurment import CentiMeterUnit
 from qunatitymeasurment import Unit
 
 #This is the composition class for feet and inch objects
@@ -19,10 +19,10 @@ class Quantity:
 
  
 try:
-    # 3 ft = 1 yard
-    yard_object = Quantity(1, YardUnit())
-    feet_object = Quantity(3, FeetUnit())
-    print("Is 3ft = 1yard:", feet_object == yard_object)
+    # 2 Inch = 5 cm
+    inch_object = Quantity(2, InchUnit())
+    cm_object = Quantity(5, CentiMeterUnit())
+    print("Is 2inch = 5cm:", inch_object == cm_object)
 except NameError as e:
     print("Runtime Error:",e)
 except ValueError as e:
